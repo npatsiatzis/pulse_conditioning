@@ -1,10 +1,15 @@
+--Software-based technique to debounce the rebounding effect of the contacts
+--of mechanical switches. In contrast to hardware-based techniques like RC filters and
+--schmitt triggers, a pulse is considered valid if it has been stable for the required
+--amount of time, thus the main component of the debounce logic is a counter.
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity debounce is 
 	generic(
-		g_clk_freq : integer := 50*10**6;		-- system clock frequency in Hz
+		g_clk_freq : integer := 10000;		-- system clock frequency in Hz
 		g_stable : integer := 10			-- time the signal must be stable in ms
 		);
 	port(

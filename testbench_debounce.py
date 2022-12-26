@@ -32,10 +32,9 @@ async def create_runt_pulses(dut,rep):
 		while(pulse_len in covered_number[rep]):
 			pulse_len = random.randint(0,g_stable)
 		number_cover(pulse_len,rep)
-		print(covered_number[rep])
-		print(pulse_len)
 		dut.i_btn.value = 1
 		await Timer(pulse_len,'ms')
+		pulse_len = random.randint(0,g_stable)
 		dut.i_btn.value = 0 
 		await Timer(pulse_len,'ms')
 
@@ -68,7 +67,6 @@ async def test(dut):
 	await reset(dut,5)
 
 	for i in range(reps):
-		print("rep is {}".format(i))
 		expected_debounced_presses +=1
 		await Combine(Join(cocotb.start_soon(capture_debounced_press(dut))),Join(cocotb.start_soon(create_runt_pulses(dut,i))))
 		assert not (expected_debounced_presses != actual_debounced_presses),"Wrong Behavior"
