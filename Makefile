@@ -8,6 +8,7 @@ SIM_ARGS += --wave=wave.ghw
 
 VHDL_SOURCES += $(PWD)/pulse_stretcher.vhd
 VHDL_SOURCES += $(PWD)/one_shot.vhd
+VHDL_SOURCES += $(PWD)/debounce.vhd
 
 # use VHDL_SOURCES for VHDL files
 
@@ -17,6 +18,10 @@ VHDL_SOURCES += $(PWD)/one_shot.vhd
 test:
 		rm -rf sim_build
 		$(MAKE) sim MODULE=testbench_stretcher TOPLEVEL=pulse_stretcher
+
+test_debounce:
+		rm -rf sim_build
+		$(MAKE) sim MODULE=testbench_debounce TOPLEVEL=debounce
 
 test_one_shot:
 		rm -rf sim_build
