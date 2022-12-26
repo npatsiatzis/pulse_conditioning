@@ -9,6 +9,7 @@ SIM_ARGS += --wave=wave.ghw
 VHDL_SOURCES += $(PWD)/pulse_stretcher.vhd
 VHDL_SOURCES += $(PWD)/one_shot.vhd
 VHDL_SOURCES += $(PWD)/debounce.vhd
+VHDL_SOURCES += $(PWD)/pwm.vhd
 
 # use VHDL_SOURCES for VHDL files
 
@@ -26,6 +27,10 @@ test_debounce:
 test_one_shot:
 		rm -rf sim_build
 		$(MAKE) sim MODULE=testbench_one_shot TOPLEVEL=one_shot
+
+test_pwm:
+		rm -rf sim_build
+		$(MAKE) sim MODULE=testbench_pwm TOPLEVEL=pwm
 
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim
