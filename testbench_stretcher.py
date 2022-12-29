@@ -18,7 +18,7 @@ def notify():
 
 # at_least = value is superfluous, just shows how you can determine the amount of times that
 # a bin must be hit to considered covered
-@CoverPoint("top.data",xf = lambda x : x.i_stretch_amt.value, bins = list(range(2**g_stretch_width)), at_least=1)
+@CoverPoint("top.i_stretch_amt",xf = lambda x : x.i_stretch_amt.value, bins = list(range(2**g_stretch_width)), at_least=1)
 def number_cover(dut):
 	covered_number.append(dut.i_stretch_amt.value)
 
@@ -58,6 +58,8 @@ async def test(dut):
 		await FallingEdge(dut.o_q)
 		end_time = get_sim_time()
 		assert not ((end_time-start_time)<stretch_amt*10),"Wrong Behavior!"
-		coverage_db["top.data"].add_threshold_callback(notify, 100)
+		coverage_db["top.i_stretch_amt"].add_threshold_callback(notify, 100)
 		number_cover(dut)
 
+	coverage_db.report_coverage(cocotb.log.info,bins=True)
+	coverage_db.export_to_xml(filename="coverage_stretcher.xml") 

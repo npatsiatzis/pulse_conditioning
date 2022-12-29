@@ -13,7 +13,7 @@ rtl_dir = tests_dir                                    #path to hdl folder where
 
 #run tests with generic values for length
 @pytest.mark.parametrize("g_clk_freq", [str(i) for i in [1*10**6,5*10**6]])
-def test_pulse_stretcher(g_clk_freq):
+def test_debounce(g_clk_freq):
 
     module = "testbench_debounce"
     toplevel = "debounce"   

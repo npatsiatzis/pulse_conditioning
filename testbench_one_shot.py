@@ -67,5 +67,9 @@ async def test(dut):
 		assert not (one_shot_pulse_period != clk_period),"Wrong Behavior!"
 		number_cover(pulse_len)
 		coverage_db["top.pulse_len"].add_threshold_callback(notify, 100)
+
+
+	coverage_db.report_coverage(cocotb.log.info,bins=True)
+	coverage_db.export_to_xml(filename="coverage_one_shot.xml") 
 		
 

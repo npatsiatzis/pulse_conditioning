@@ -22,7 +22,7 @@ def notify():
 
 # at_least = value is superfluous, just shows how you can determine the amount of times that
 # a bin must be hit to considered covered
-@CoverPoint("top.data",xf = lambda x,y : x, bins = list(range(g_stable+1)), at_least=reps)
+@CoverPoint("top.pulse_len",xf = lambda x,y : x, bins = list(range(g_stable+1)), at_least=reps)
 def number_cover(x,rep):
 	covered_number[rep].append(x)
 
@@ -70,3 +70,7 @@ async def test(dut):
 		expected_debounced_presses +=1
 		await Combine(Join(cocotb.start_soon(capture_debounced_press(dut))),Join(cocotb.start_soon(create_runt_pulses(dut,i))))
 		assert not (expected_debounced_presses != actual_debounced_presses),"Wrong Behavior"
+
+
+	coverage_db.report_coverage(cocotb.log.info,bins=True)
+	coverage_db.export_to_xml(filename="coverage_debounce.xml") 

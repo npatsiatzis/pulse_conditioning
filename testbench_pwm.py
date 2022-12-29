@@ -110,3 +110,7 @@ async def test(dut):
 		#check the actual high cycles based on the generic pwm frequency and the generic duty cycle
 		#against the expected values given these specs
 		assert not (round(pwm_half_cycle,3) != round(expected_high_cycle,3)),"Wrong Behavior!"
+
+
+	coverage_db.report_coverage(cocotb.log.info,bins=True)
+	coverage_db.export_to_xml(filename="coverage_pwm.xml") 
