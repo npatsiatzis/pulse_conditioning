@@ -1,8 +1,5 @@
 ![example workflow](https://github.com/npatsiatzis/pulse_conditioning/actions/workflows/regression.yml/badge.svg)
 ![example workflow](https://github.com/npatsiatzis/pulse_conditioning/actions/workflows/coverage.yml/badge.svg)
-![example workflow](https://github.com/npatsiatzis/pulse_conditioning/actions/workflows/regression_pyuvm.yml/badge.svg)
-![example workflow](https://github.com/npatsiatzis/pulse_conditioning/actions/workflows/coverage_pyuvm.yml/badge.svg)
-
 
 
 ### RTL implementation of conditioning (stretch/cut/debounce) for pulses
