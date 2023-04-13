@@ -11,22 +11,18 @@ tests_dir = os.path.abspath(os.path.dirname(__file__)) #gives the path to the te
 rtl_dir = tests_dir                                    #path to hdl folder where .vhdd files are placed
 
 
-#run tests with generic values 
-@pytest.mark.parametrize("g_sys_clk", [str(i) for i in [20*10**6,40*10**6]])
-@pytest.mark.parametrize("g_pwm", [str(i) for i in [10*10**3,30*10**3]])
-@pytest.mark.parametrize("g_bits_resolution", [str(i) for i in range(2,5,1)])
-def test_pwm(g_sys_clk,g_pwm,g_bits_resolution):
+#run tests with generic values for length
+@pytest.mark.parametrize("g_stretch_width", [str(i) for i in range(4,9,4)])
+def test_pulse_stretcher(g_stretch_width):
 
-    module = "testbench_pwm"
-    toplevel = "pwm"   
+    module = "testbench_stretcher"
+    toplevel = "pulse_stretcher"   
     vhdl_sources = [
-        os.path.join(rtl_dir, "pwm.vhd"),
+        os.path.join(rtl_dir, "../rtl/pulse_stretcher.vhd"),
         ]
 
     parameter = {}
-    parameter['g_sys_clk'] = g_sys_clk
-    parameter['g_pwm'] = g_pwm
-    parameter['g_bits_resolution'] = g_bits_resolution
+    parameter['g_stretch_width'] = g_stretch_width
 
     run(
         python_search=[tests_dir],                         #where to search for all the python test files

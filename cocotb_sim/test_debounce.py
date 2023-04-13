@@ -12,13 +12,13 @@ rtl_dir = tests_dir                                    #path to hdl folder where
 
 
 #run tests with generic values for length
-@pytest.mark.parametrize("g_clk_freq", [str(i) for i in [1*10**6,5*10**6]])
+@pytest.mark.parametrize("g_clk_freq", [str(i) for i in [1*10**5,4*10**5]])
 def test_debounce(g_clk_freq):
 
     module = "testbench_debounce"
     toplevel = "debounce"   
     vhdl_sources = [
-        os.path.join(rtl_dir, "debounce.vhd"),
+        os.path.join(rtl_dir, "../rtl/debounce.vhd"),
         ]
 
     parameter = {}

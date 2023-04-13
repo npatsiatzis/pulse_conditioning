@@ -6,10 +6,10 @@ TOPLEVEL_LANG ?= vhdl
 EXTRA_ARGS += --std=08
 SIM_ARGS += --wave=wave.ghw
 
-VHDL_SOURCES += $(PWD)/pulse_stretcher.vhd
-VHDL_SOURCES += $(PWD)/one_shot.vhd
-VHDL_SOURCES += $(PWD)/debounce.vhd
-VHDL_SOURCES += $(PWD)/pwm.vhd
+VHDL_SOURCES += $(PWD)/../rtl/pulse_stretcher.vhd
+VHDL_SOURCES += $(PWD)/../rtl/one_shot.vhd
+VHDL_SOURCES += $(PWD)/../rtl/debounce.vhd
+VHDL_SOURCES += $(PWD)/../rtl/pwm.vhd
 
 # use VHDL_SOURCES for VHDL files
 
