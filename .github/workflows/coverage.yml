@@ -49,7 +49,10 @@ jobs:
     - name: regression_pwm
       run: |
         cd cocotb_sim/ && make test_pwm
-      
+        
+    - name: regression_watchdog
+      run: |
+        cd cocotb_sim/ && make test_watchdog
     - name: Functional Coverage
       run: |
         cd cocotb_sim/ && var1=$(cat coverage_debounce.xml | grep -o -E 'cover_percentage.{0,5}' | head -1 | cut -f2- -d\")
@@ -60,3 +63,5 @@ jobs:
         if [ $var3 = 100 ]; then exit 0; else exit 1; fi
         cd cocotb_sim/ && var4=$(cat coverage_stretcher.xml | grep -o -E 'cover_percentage.{0,5}' | head -1 | cut -f2- -d\")
         if [ $var4 = 100 ]; then exit 0; else exit 1; fi
+        cd cocotb_sim/ && var5=$(cat coverage.xml | grep -o -E 'cover_percentage.{0,5}' | head -1 | cut -f2- -d\")
+        if [ $var5 = 100 ]; then exit 0; else exit 1; fi
