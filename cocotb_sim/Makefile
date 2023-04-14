@@ -10,6 +10,7 @@ VHDL_SOURCES += $(PWD)/../rtl/pulse_stretcher.vhd
 VHDL_SOURCES += $(PWD)/../rtl/one_shot.vhd
 VHDL_SOURCES += $(PWD)/../rtl/debounce.vhd
 VHDL_SOURCES += $(PWD)/../rtl/pwm.vhd
+VHDL_SOURCES += $(PWD)/../rtl/watchdog_timer.vhd
 
 # use VHDL_SOURCES for VHDL files
 
@@ -32,5 +33,8 @@ test_pwm:
 		rm -rf sim_build
 		$(MAKE) sim MODULE=testbench_pwm TOPLEVEL=pwm
 
+test_watchdog:
+		rm -rf sim_build
+		$(MAKE) sim MODULE=testbench_watchdog TOPLEVEL=watchdog_timer
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim
